@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -26,7 +25,7 @@ class SecondActivity : AppCompatActivity() {
         Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com")).also {
                 try {
                     startActivity(it)
-                } catch (e: ActivityNotFoundException){
+                } catch (e: Throwable){
 
                     Toast.makeText(this@SecondActivity,
                         "No browser installed in your phone. Please install one and try again.",
