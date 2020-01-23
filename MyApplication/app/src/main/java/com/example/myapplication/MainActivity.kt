@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d(this.javaClass.simpleName, "onCreate")
 
+
+
         btn_open_second.setOnClickListener {
             Intent(this, SecondActivity::class.java).apply {
                 startActivity(this)
