@@ -5,7 +5,7 @@ import android.util.Log
 
 class HistoryApp: Application() {
 
-     val TAG:String = "MainActivity";
+     val TAG:String = "MainApp";
 
     override fun onCreate() {
         super.onCreate()
