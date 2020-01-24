@@ -32,4 +32,29 @@
     </Button>
 
 
+    <Button
+        android:id="@+id/nextButtonForResult"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Start Next for Result"
+        android:layout_below="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+    <Button
+        android:id="@+id/buttonDone"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Done"
+        android:layout_below="@+id/nextButtonForResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+
 </RelativeLayout>
