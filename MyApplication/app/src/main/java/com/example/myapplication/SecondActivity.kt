@@ -23,18 +23,22 @@ class SecondActivity : AppCompatActivity() {
 
         btn_link.setOnClickListener {
 
-        Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com")).also {
-                try {
-                    startActivity(it)
-                } catch (e: ActivityNotFoundException){
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"))
 
-                    Toast.makeText(this@SecondActivity,
-                        "No browser installed in your phone. Please install one and try again.",
-                        Toast.LENGTH_LONG)
-                        .show()
-                }
+            try
+            {
+                startActivity(intent)
+            }
+            catch (e: ActivityNotFoundException)
+            {
+                Toast.makeText(
+                    this@SecondActivity,
+                    "No browser installed in your phone. Please install one and try again.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
+
     }
 
     override fun onStart() {
