@@ -12,9 +12,6 @@ class MainActivity : AppCompatActivity() {
     var activityNumber : Int = 1
     var TAG : String = ""
 
-    companion object{
-        val MY_RESULT_REQUEST = 100
-    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,31 +36,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("number", activityNumber +1 )
             this@MainActivity.startActivity(intent)
         }
-
-
-        this.nextButtonForResult.setOnClickListener{
-
-            //Code to start new instance of the same activity with new Activity number
-
-            var intent = Intent(this@MainActivity, MainActivity::class.java)
-            intent.putExtra("number", activityNumber +1 )
-
-            this@MainActivity.startActivityForResult(intent, MainActivity.MY_RESULT_REQUEST)
-        }
-
-
-        this.buttonDone.setOnClickListener{
-
-            var data = Intent()
-            data.putExtra("data", activityNumber)
-
-            setResult(Activity.RESULT_OK, data)
-
-            finish()
-
-        }
-
-
 
         Log.d(TAG, "onCreate")
 
@@ -101,22 +73,4 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onRestart")
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if( resultCode==Activity.RESULT_OK ){
-
-            if( requestCode== MainActivity.MY_RESULT_REQUEST ){
-
-               var activityNumber = data?.getIntExtra("data", 0)
-
-                Log.d(TAG, "onActivityResult $activityNumber" )
-
-            }
-
-        }
-
-        Log.d(TAG, "onActivityResult")
-
-    }
 }
