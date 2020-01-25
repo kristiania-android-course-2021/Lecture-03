@@ -13,5 +13,5 @@ This example project will teach students the different ways to handle events whi
 
 
 ## /CalculatorApp
-  Exercise app to implement a calculator app.
+  Exercise project to implement a calculator app.
   
