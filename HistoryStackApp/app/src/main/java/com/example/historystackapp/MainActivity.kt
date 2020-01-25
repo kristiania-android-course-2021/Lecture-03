@@ -1,5 +1,6 @@
 package com.example.historystackapp
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     var activityNumber : Int = 1
     var TAG : String = ""
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,9 +72,5 @@ class MainActivity : AppCompatActivity() {
         super.onRestart()
         Log.d(TAG, "onRestart")
     }
-
-
-
-
 
 }

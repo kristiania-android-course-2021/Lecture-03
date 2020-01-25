@@ -24,7 +24,7 @@
         android:id="@+id/nextButton"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
-        android:text="Start Next"
+        android:text="Start New"
         android:layout_below="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
