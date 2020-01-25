@@ -3,12 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item1"
-        android:title="Item 1"/>
+        app:showAsAction="always"
+        android:id="@+id/item_headphone"
+        android:icon="@drawable/ic_action_headphones"
+        android:title="Headphones"/>
     <item
-        android:id="@+id/item2"
-        android:title="Item 2"/>
+        app:showAsAction="collapseActionView"
+        android:id="@+id/item_help"
+        android:icon="@drawable/ic_action_help"
+        android:title="Help"/>
     <item
+        android:enabled="false"
         android:id="@+id/item3"
         android:title="Item 3"
         app:showAsAction="withText"/>

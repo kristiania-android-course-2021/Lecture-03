@@ -128,12 +128,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
-            R.id.item1->
+            R.id.item_headphone->
 
-                Toast.makeText(this, "Menu item 1", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Headphone", Toast.LENGTH_LONG).show()
 
-            R.id.item2->
-                Toast.makeText(this, "Menu item 2", Toast.LENGTH_LONG).show()
+            R.id.item_help->
+                Toast.makeText(this, "Help", Toast.LENGTH_LONG).show()
 
             R.id.item3->
                 Toast.makeText(this, "Menu item 3", Toast.LENGTH_LONG).show()
