@@ -4,17 +4,22 @@
 
     <item
         app:showAsAction="always"
+
         android:id="@+id/item_headphone"
         android:icon="@drawable/ic_action_headphones"
         android:title="Headphones"/>
     <item
         app:showAsAction="collapseActionView"
+
         android:id="@+id/item_help"
         android:icon="@drawable/ic_action_help"
         android:title="Help"/>
     <item
-        android:enabled="false"
+        app:showAsAction="ifRoom"
+
+        android:icon="@drawable/ic_action_bell"
         android:id="@+id/item3"
-        android:title="Item 3"
-        app:showAsAction="withText"/>
+        android:title="Bell menu"
+       />
+
 </menu>
