@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
         Log.d(this.javaClass.simpleName, "onCreate")
 
 
@@ -20,6 +21,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(this)
             }
         }
+
+        //applicationContext is also Application instance
+        var myApp : MyApplication = this.applicationContext as MyApplication
+        var name = myApp.appName
+
     }
 
     override fun onStart() {
