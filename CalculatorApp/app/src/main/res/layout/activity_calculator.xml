@@ -13,7 +13,7 @@
 
         <TextView
             android:gravity="right"
-            android:text=""
+            android:text="2*34"
             style="@style/button_style"
             android:textColor="@color/apple_green"
             android:id="@+id/textView"

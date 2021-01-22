@@ -19,6 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //Repo where the library files are located
         maven { url "https://jitpack.io" }
 
     }
