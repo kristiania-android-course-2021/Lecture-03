@@ -3,4 +3,7 @@
     <string name="heaphone">Headphone</string>
     <string name="help">Help</string>
     <string name="bell_menu">Bell Menu</string>
+    <string name="calculate">Calculate</string>
+    <string name="show_toast_1">Show Toast 1</string>
+    <string name="show_toast_2">Show Toast 2</string>
 </resources>

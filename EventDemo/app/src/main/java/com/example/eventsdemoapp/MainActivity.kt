@@ -10,41 +10,43 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import com.evgenii.jsevaluator.JsEvaluator
 import com.evgenii.jsevaluator.interfaces.JsCallback
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener  {
 
+    //Todo How to include JsEvaluator library into your project
     var jsEvaluator: JsEvaluator? = null
-
+    var editText: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        jsEvaluator = JsEvaluator(this)
 
+       //Todo find views by findViewById
 
-        this.button3.setOnClickListener(this)
+        var button1 = findViewById(R.id.button1) as Button // Using typecast
+        var button2 = findViewById<Button>(R.id.button2)   // Using generic
+        var editText = findViewById<EditText>(R.id.editText)
 
-        this.button2.setOnClickListener( object: View.OnClickListener{
+        button2.setOnClickListener( object: View.OnClickListener{
             override fun onClick(view: View?) {
                 showToast(view as Button)
             }
         })
 
-        this.button1.setOnClickListener{view: View ->
+        button1.setOnClickListener { view: View ->
             calculate()
         }
 
         editText.addTextChangedListener(object : TextWatcher {
-
             override fun afterTextChanged(editable: Editable?) {
-
-                Log.d(this@MainActivity.javaClass.simpleName, editable.toString())
-
+                Log.d(this.javaClass.simpleName, editable.toString())
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -53,79 +55,47 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
-
-
-
-        this.button4.setOnTouchListener( object : View.OnTouchListener{
-            override fun onTouch(p0: View?, motionEvent: MotionEvent?): Boolean {
-
-                Log.d("button4",motionEvent.toString())
-
-                return true
-            }
-        })
-
-        jsEvaluator = JsEvaluator(this)
-
     }
 
+    fun calculate() {
 
-    private fun calculate() {
-
-        jsEvaluator?.evaluate(editText.text.toString(), object : JsCallback {
+        //Todo what does ?. with  editText do?
+        jsEvaluator?.evaluate(editText?.text.toString(), object : JsCallback {
             override fun onResult(result: String) {
-                editText.setText(result);
+                editText?.setText(result);
             }
-
             override fun onError(errorMessage: String) {
-                editText.setText(errorMessage);
-
+                editText?.setText(errorMessage);
             }
         })
-
-        Toast.makeText(this, editText?.text, Toast.LENGTH_LONG).show()
-
     }
-
 
     override fun onClick(view: View?) {
-
+        //Checking id of the view
         when(view?.id) {
             R.id.button3->
                 showToast(view as Button)
         }
-
     }
 
-    private fun showToast(button:Button? ) {
-
-
+    fun showToast(button:Button?) {
+        //Toast are short lived pop up messages which appear and then auto disappear
         Toast.makeText(this, button?.text, Toast.LENGTH_LONG).show()
-
     }
 
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        Log.d(this@MainActivity.javaClass.simpleName,event.toString())
+        Log.d(this.javaClass.simpleName,event.toString())
         return super.onTouchEvent(event)
     }
 
-
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        Log.d(this@MainActivity.javaClass.simpleName,"onBackPressed")
-
-    }
-
-
+    //Todo associate menu R.menu.demo_menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.demo_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
+    //Todo Handle menu events R.menu.demo_menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when(item.itemId){
             R.id.item_headphone->
                 Toast.makeText(this, getString(R.string.heaphone), Toast.LENGTH_LONG).show()
@@ -137,5 +107,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
         return super.onOptionsItemSelected(item)
     }
 
-
+    //Todo override onBackPressed of the activity
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.d(this.javaClass.simpleName,"onBackPressed")
+    }
 }
