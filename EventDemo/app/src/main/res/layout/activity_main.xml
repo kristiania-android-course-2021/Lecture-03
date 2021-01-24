@@ -12,7 +12,7 @@
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:digits="01234567890+-*()"
+        android:digits="01234567890+-*()="
         android:imeActionLabel="Done"
         android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"

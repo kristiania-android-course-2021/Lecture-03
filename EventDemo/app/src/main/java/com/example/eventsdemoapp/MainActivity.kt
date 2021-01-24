@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
 
         var button1 = findViewById(R.id.button1) as Button // Using typecast
         var button2 = findViewById<Button>(R.id.button2)   // Using generic
-        var editText = findViewById<EditText>(R.id.editText)
+        var button3 = findViewById<Button>(R.id.button3)   // Using generic
+
+        editText = findViewById<EditText>(R.id.editText)
 
         button2.setOnClickListener( object: View.OnClickListener{
             override fun onClick(view: View?) {
@@ -41,12 +43,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
         })
 
         button1.setOnClickListener { view: View ->
-            calculate()
+            //Todo: what does ? mean?
+            //Todo: Why we are using editableText of editText
+            var expression = editText?.editableText.toString()
+
+            //Todo what does !! mean?
+            calculate(expression!!)
         }
 
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(editable: Editable?) {
-                Log.d(this.javaClass.simpleName, editable.toString())
+        button3.setOnClickListener(this)
+
+        editText?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(editable: Editable) {
+                var expression = editable.toString()
+                if( expression.isNotBlank() ){
+                    var lastChar = expression.get(expression.length-1);
+                    if(lastChar== '=') {
+                        calculate( expression.substring(0, expression.length-1) )
+                    }
+                }
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -57,10 +72,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
         })
     }
 
-    fun calculate() {
+    fun calculate(expression: String) {
 
-        //Todo what does ?. with  editText do?
-        jsEvaluator?.evaluate(editText?.text.toString(), object : JsCallback {
+        jsEvaluator?.evaluate(expression, object : JsCallback {
             override fun onResult(result: String) {
                 editText?.setText(result);
             }
@@ -73,7 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
     override fun onClick(view: View?) {
         //Checking id of the view
         when(view?.id) {
-            R.id.button3->
+            R.id.button3 ->
                 showToast(view as Button)
         }
     }
@@ -85,7 +99,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
 
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        Log.d(this.javaClass.simpleName,event.toString())
+        Log.d(this.javaClass.simpleName, event.toString())
         return super.onTouchEvent(event)
     }
 
