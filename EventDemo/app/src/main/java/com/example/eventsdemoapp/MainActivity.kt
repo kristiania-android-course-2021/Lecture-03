@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
     }
 
     fun showToast(button:Button?) {
-        //Toast are short lived pop up messages which appear and then auto disappear
+        //Toasts are short lived pop up messages which appear and then auto disappear
         Toast.makeText(this, button?.text, Toast.LENGTH_LONG).show()
     }
 
