@@ -17,7 +17,6 @@ import com.evgenii.jsevaluator.interfaces.JsCallback
 
 class MainActivity : AppCompatActivity(), View.OnClickListener  {
 
-    //Todo How to include JsEvaluator library into your project
     var jsEvaluator: JsEvaluator? = null
     var editText: EditText? = null
 
@@ -27,8 +26,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
 
         setContentView(R.layout.activity_main)
         jsEvaluator = JsEvaluator(this)
-
-       //Todo find views by findViewById
 
         var button1 = findViewById(R.id.button1) as Button // Using typecast
         var button2 = findViewById<Button>(R.id.button2)   // Using generic
@@ -43,11 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
         })
 
         button1.setOnClickListener { view: View ->
-            //Todo: what does ? mean?
-            //Todo: Why we are using editableText of editText
             var expression = editText?.editableText.toString()
-
-            //Todo what does !! mean?
             calculate(expression!!)
         }
 
@@ -103,12 +96,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
         return super.onTouchEvent(event)
     }
 
-    //Todo associate menu R.menu.demo_menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.demo_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
-    //Todo Handle menu events R.menu.demo_menu
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.item_headphone->
@@ -121,7 +113,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener  {
         return super.onOptionsItemSelected(item)
     }
 
-    //Todo override onBackPressed of the activity
     override fun onBackPressed() {
         super.onBackPressed()
         Log.d(this.javaClass.simpleName,"onBackPressed")
